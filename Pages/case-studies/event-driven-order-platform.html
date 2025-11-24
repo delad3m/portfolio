@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Case Study: Event-Driven Order Platform - Your Name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="logo">Your Name</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../../index.html#about-hero">About</a></li>
+          <li><a href="../../index.html#explore">Work</a></li>
+          <li><a href="../../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel detail-intro">
+      <div class="container">
+        <p class="section-label">Case study</p>
+        <h1>Event-Driven Order Processing Platform</h1>
+        <p class="meta">Retail · Microservices · Event-driven architecture</p>
+        <p class="section-intro">
+          A modern order processing platform designed to handle peak traffic events through a
+          microservices and messaging-based architecture.
+        </p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="container">
+        <article class="case-study">
+          <h2>Context</h2>
+          <p>
+            The client was a global retailer whose legacy monolithic order management system
+            struggled during major sales campaigns. Spikes in traffic caused slow response times,
+            duplicate orders and occasional downtime.
+          </p>
+          <p>
+            Non-functional requirements included handling 5x normal traffic, maintaining a highly
+            available customer experience and improving observability across the order lifecycle.
+          </p>
+
+          <h3>Key drivers</h3>
+          <ul>
+            <li>Scale horizontally to handle spikes in order volume.</li>
+            <li>Isolate failures to prevent a single issue taking down the whole flow.</li>
+            <li>Improve visibility of order status across teams.</li>
+          </ul>
+
+          <h2>Solution</h2>
+          <p>
+            I designed a microservices architecture based on bounded contexts (Orders, Payments,
+            Inventory, Notifications) communicating via an event bus/message broker.
+          </p>
+
+          <h3>Logical flow</h3>
+          <ol>
+            <li>Order Service exposes an API used by web and mobile channels.</li>
+            <li>On a valid order, it persists state and publishes an <em>OrderCreated</em> event.</li>
+            <li>
+              Payment Service consumes <em>OrderCreated</em>, calls external payment providers and
+              emits <em>OrderPaid</em> or <em>OrderPaymentFailed</em>.
+            </li>
+            <li>
+              Inventory Service listens to payment events, reserves or releases stock accordingly
+              and emits <em>StockReserved</em> or <em>StockFailed</em>.
+            </li>
+            <li>
+              Notification Service listens to business events and triggers emails/SMS updates to the
+              customer.
+            </li>
+          </ol>
+
+          <h3>Architecture diagram</h3>
+          <p>
+            Replace the image below with your diagram exported from Visio, Lucidchart or draw.io
+            (e.g. <code>assets/diagrams/order-platform.png</code>).
+          </p>
+          <img
+            src="../../assets/diagrams/order-platform.png"
+            alt="Event-driven order platform architecture diagram"
+            class="arch-diagram"
+          />
+
+          <h3>Key design decisions</h3>
+          <ul>
+            <li>
+              <strong>Event-driven integration:</strong> decoupled services and enabled them to
+              scale independently, while smoothing load on downstream components.
+            </li>
+            <li>
+              <strong>Idempotent consumers:</strong> every consumer implemented idempotency based
+              on business keys, ensuring safe handling of duplicate messages.
+            </li>
+            <li>
+              <strong>Resilience patterns:</strong> circuit breakers, retries with backoff and
+              dead-letter queues used around external payment and notification providers.
+            </li>
+            <li>
+              <strong>Observability:</strong> correlation IDs and structured logging across
+              services, plus metrics and dashboards for key business KPIs.
+            </li>
+          </ul>
+
+          <h3>Outcomes</h3>
+          <ul>
+            <li>Successfully supported 5x traffic increase during major campaigns.</li>
+            <li>Reduced average order processing time by ~40% versus the previous system.</li>
+            <li>Improved fault isolation, reducing blast radius of issues.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

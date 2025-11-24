@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Architecture Case Studies - Your Name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="logo">Your Name</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html#about-hero">About</a></li>
+          <li><a href="../index.html#explore">Work</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel detail-intro">
+      <div class="container">
+        <p class="section-label">Case studies</p>
+        <h1>Architecture Case Studies</h1>
+        <p class="section-intro">
+          A set of concrete architecture examples. Hover a case study on the left to preview it,
+          then click to open the full case study with context, solution and diagrams.
+        </p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="container split-layout">
+        <!-- CASE STUDY TITLES -->
+        <ul class="item-list cs-list">
+          <li class="item is-active" data-target="order-platform">
+            <div class="item-title">Event-driven order processing platform</div>
+            <div class="item-subtitle">Retail · Microservices · Messaging</div>
+          </li>
+          <li class="item" data-target="data-platform">
+            <div class="item-title">Data platform for analytics &amp; reporting</div>
+            <div class="item-subtitle">Enterprise · Batch &amp; streaming</div>
+          </li>
+          <li class="item" data-target="integration-hub">
+            <div class="item-title">Integration hub &amp; API layer</div>
+            <div class="item-subtitle">Multi-system · APIs &amp; events</div>
+          </li>
+        </ul>
+
+        <!-- PREVIEW PANELS -->
+        <div class="item-panels cs-panels">
+          <article class="item-panel is-visible" id="cs-order-platform">
+            <h3>Event-driven order processing platform</h3>
+            <p class="tech">Retail · Microservices · Event-driven</p>
+            <p>
+              A microservices and messaging-based architecture designed to handle large traffic
+              spikes for online orders, supporting better scalability and resilience than the
+              legacy monolith.
+            </p>
+            <p>
+              <a href="case-studies/event-driven-order-platform.html" class="contact-link">
+                View full case study &rarr;
+              </a>
+            </p>
+          </article>
+
+          <article class="item-panel" id="cs-data-platform">
+            <h3>Data platform for analytics &amp; reporting</h3>
+            <p class="tech">Cloud data lake · ETL · BI</p>
+            <p>
+              A central platform that ingests, curates and exposes data for analytics and self-service
+              reporting, replacing multiple inconsistent data silos.
+            </p>
+            <p>
+              <a href="case-studies/data-platform.html" class="contact-link">
+                View full case study &rarr;
+              </a>
+            </p>
+          </article>
+
+          <article class="item-panel" id="cs-integration-hub">
+            <h3>Integration hub &amp; API layer</h3>
+            <p class="tech">API gateway · Messaging · B2B</p>
+            <p>
+              An integration hub that provides consistent APIs and events to connect internal
+              systems and external partners, reducing point-to-point complexity.
+            </p>
+            <p>
+              <a href="case-studies/integration-hub.html" class="contact-link">
+                View full case study &rarr;
+              </a>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

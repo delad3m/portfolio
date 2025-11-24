@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Name - IT Architect Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Sticky navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="logo">Deladem Agbelengor</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about-hero">About</a></li>
+          <li><a href="#explore">Work</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO / ABOUT ME -->
+    <section id="about-hero" class="panel hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="hero-eyebrow">IT Architect</p>
+          <h1>Deladem Agbelengor</h1>
+          <p class="hero-summary">
+            I design scalable, secure and resilient systems across cloud, data and integration
+            platforms. My work spans microservices, event-driven architectures and enterprise
+            integration for large organisations.
+          </p>
+          <div class="hero-actions">
+            <a href="#explore" class="btn primary js-scroll">Explore my work</a>
+            <a href="#contact" class="btn secondary js-scroll">Contact me</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <!-- Replace this with an <img> of you if you like -->
+          <div class="hero-placeholder">
+            <span>Architecture<br />Portfolio</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- EXPLORE MY WORK (interactive band) -->
+    <section id="explore" class="panel explore">
+      <div class="container">
+        <header class="explore-header">
+          <p class="section-label">Explore</p>
+          <h2>How I demonstrate architecture expertise</h2>
+          <p class="section-intro">
+            Hover each area to preview what I cover, then click to dive into full details, examples
+            and diagrams.
+          </p>
+        </header>
+
+        <div class="explore-layout">
+          <!-- LEFT: interactive text list -->
+          <ul class="explore-list">
+            <li class="explore-item is-active" data-target="experience">
+              <a href="pages/projects.html" class="explore-link">
+                Detailed experience &amp; projects
+              </a>
+            </li>
+            <li class="explore-item" data-target="case-studies">
+              <a href="pages/case-studies.html" class="explore-link">
+                Case study architectures
+              </a>
+            </li>
+            <li class="explore-item" data-target="thought-leadership">
+              <a href="pages/thought-leadership.html" class="explore-link">
+                Thought leadership
+              </a>
+            </li>
+          </ul>
+
+          <!-- RIGHT: description that changes on hover -->
+          <div class="explore-description">
+            <article class="explore-panel is-visible" id="panel-experience">
+              <h3>Detailed experience &amp; projects</h3>
+              <p>
+                A deeper view of my career path and the projects I&apos;ve delivered: cloud
+                migrations, platform builds, integration programmes and modernisation efforts
+                across multiple industries.
+              </p>
+              <p class="panel-hint">
+                Click to see a structured list of roles and projects, with responsibilities and
+                impact.
+              </p>
+            </article>
+
+            <article class="explore-panel" id="panel-case-studies">
+              <h3>Case study architectures</h3>
+              <p>
+                Real-world architecture case studies spanning microservices, event-driven systems,
+                data platforms and integration hubs, each described with context, solution and
+                diagrams.
+              </p>
+              <p class="panel-hint">
+                Click to browse case studies, then open each one to see the architecture in depth.
+              </p>
+            </article>
+
+            <article class="explore-panel" id="panel-thought-leadership">
+              <h3>Thought leadership</h3>
+              <p>
+                Articles, talks and internal sessions where I share opinions, patterns and lessons
+                learned about designing and evolving complex systems.
+              </p>
+              <p class="panel-hint">
+                Click to view topics I care about, and links to external content where available.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="panel contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>
+          I&apos;m open to architecture roles, consulting engagements and collaborations on
+          interesting systems problems.
+        </p>
+        <ul class="contact-list">
+          <li>Email: <a href="mailto:you@example.com">you@example.com</a></li>
+          <li>
+            LinkedIn:
+            <a href="https://www.linkedin.com/in/yourprofile" target="_blank">yourprofile</a>
+          </li>
+          <li>
+            GitHub:
+            <a href="https://github.com/yourgithub" target="_blank">@yourgithub</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

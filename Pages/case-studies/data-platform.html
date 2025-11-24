@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Case Study: Data Platform - Your Name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="logo">Your Name</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../../index.html#about-hero">About</a></li>
+          <li><a href="../../index.html#explore">Work</a></li>
+          <li><a href="../../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel detail-intro">
+      <div class="container">
+        <p class="section-label">Case study</p>
+        <h1>Data Platform for Analytics &amp; Reporting</h1>
+        <p class="meta">Enterprise · Data lake · Analytics &amp; BI</p>
+        <p class="section-intro">
+          A central data platform that consolidates data from multiple systems to enable analytics,
+          reporting and self-service insights.
+        </p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="container">
+        <article class="case-study">
+          <h2>Context</h2>
+          <p>
+            The organisation had multiple reporting solutions and data extracts maintained by
+            different teams, leading to inconsistent numbers and high maintenance overhead.
+          </p>
+          <p>
+            The goal was to establish a governed, scalable platform for analytics and BI, while
+            supporting both batch and near-real-time use cases.
+          </p>
+
+          <h2>Solution</h2>
+          <p>
+            I defined a layered data platform architecture, including ingestion, storage, curation
+            and consumption layers, with clear responsibilities and data contracts.
+          </p>
+
+          <h3>Logical components</h3>
+          <ul>
+            <li>
+              <strong>Ingestion:</strong> pipelines pulling data from source systems via CDC, file
+              drops and APIs.
+            </li>
+            <li>
+              <strong>Storage:</strong> raw and curated zones in a cloud data lake.
+            </li>
+            <li>
+              <strong>Processing:</strong> batch and streaming jobs to clean, join and enrich data.
+            </li>
+            <li>
+              <strong>Serving:</strong> semantic models and curated datasets for BI tools and
+              downstream consumers.
+            </li>
+          </ul>
+
+          <h3>Architecture diagram</h3>
+          <p>
+            Replace the image below with your real data platform diagram from Visio/Lucidchart/etc.
+          </p>
+          <img
+            src="../../assets/diagrams/data-platform.png"
+            alt="Data platform architecture diagram"
+            class="arch-diagram"
+          />
+
+          <h3>Key design decisions</h3>
+          <ul>
+            <li>
+              Separation of raw and curated zones to allow reprocessing and maintain lineage.
+            </li>
+            <li>
+              Use of data contracts and ownership to align source and consuming teams.
+            </li>
+            <li>
+              Centralised monitoring of data pipeline health and data quality checks.
+            </li>
+          </ul>
+
+          <h3>Outcomes</h3>
+          <ul>
+            <li>Reduced duplication of reporting solutions and conflicting numbers.</li>
+            <li>Improved time-to-insight for new analytical questions.</li>
+            <li>Clearer accountability for data domains and quality.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>
