@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Case Study: UK Domestic Real-Time A2A Merchant Payment Scheme - Your Name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="logo">Your Name</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../../index.html#about-hero">About</a></li>
+          <li><a href="../../index.html#explore">Work</a></li>
+          <li><a href="../../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Intro -->
+    <section class="panel detail-intro">
+      <div class="container">
+        <p class="section-label">Case study</p>
+        <h1>UK Domestic Real-Time A2A Merchant Payment Scheme</h1>
+        <p class="meta">Payments · Real-time A2A · Faster Payments · Scheme Architecture</p>
+        <p class="section-intro">
+          Architecture for a UK domestic real-time account-to-account (A2A) payment scheme that
+          provides a card-like merchant and customer experience while settling instantly over
+          Faster Payments and keeping control and economics within UK rails.
+        </p>
+      </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="panel">
+      <div class="container">
+        <article class="case-study">
+          <h2>Context</h2>
+          <p>
+            UK domestic retail payments are dominated by global card networks, even though the UK
+            operates a mature real-time account-to-account rail via Faster Payments (FPS). This
+            creates higher domestic costs, longer settlement cycles and limited UK sovereignty over
+            scheme rules and risk models.
+          </p>
+          <p>
+            The objective was to design a domestic A2A merchant payment scheme that could act as a
+            modern alternative to cards for UK transactions: real-time settlement, lower cost,
+            strong customer protection and a familiar experience for both merchants and customers.
+          </p>
+
+          <h2>Problem</h2>
+          <p>
+            The key challenges were:
+          </p>
+          <ul>
+            <li>
+              Providing a <strong>card-like UX</strong> (tap, QR, online checkout) on top of FPS,
+              which is natively “just a payment rail”.
+            </li>
+            <li>
+              Ensuring <strong>customer privacy</strong> by removing the need to expose bank
+              account numbers to merchants.
+            </li>
+            <li>
+              Designing a central scheme layer that could coordinate
+              <strong>routing, fraud, SCA and disputes</strong> for many issuers, acquirers and
+              merchants.
+            </li>
+            <li>
+              Creating a <strong>clear liability and dispute model</strong> consistent with
+              irrevocable FPS payments.
+            </li>
+            <li>
+              Maintaining <strong>international acceptance</strong> via co-badged instruments
+              alongside global card networks.
+            </li>
+          </ul>
+
+          <h2>Solution Overview</h2>
+          <p>
+            I designed a scheme-layer architecture organised into several domains, each responsible
+            for a different part of the end-to-end A2A merchant payment lifecycle:
+          </p>
+          <ul>
+            <li>
+              <strong>Customer domain</strong> – banking apps and wallets used for Strong Customer
+              Authentication (SCA), approvals and dispute views.
+            </li>
+            <li>
+              <strong>Merchant domain</strong> – POS, SoftPOS and e-commerce platforms integrating
+              via a single Merchant Integration Gateway.
+            </li>
+            <li>
+              <strong>Scheme access layer</strong> – standardised integration APIs for merchants,
+              acquirers and issuers.
+            </li>
+            <li>
+              <strong>Scheme core</strong> – switching, orchestration, routing, tokenisation,
+              fraud/risk and dispute management.
+            </li>
+            <li>
+              <strong>Issuer PSPs</strong> – customer ledgers, SCA and outbound FPS payments.
+            </li>
+            <li>
+              <strong>Acquirer PSPs</strong> – merchant settlement ledgers, merchant onboarding and
+              inbound FPS processing.
+            </li>
+            <li>
+              <strong>Settlement rail</strong> – Faster Payments, used for real-time movement of
+              funds between issuers and acquirers.
+            </li>
+          </ul>
+
+          <h3>High-Level Architecture Diagram</h3>
+          <p>
+            Replace the image below with your actual A2A scheme architecture diagram exported from
+            Visio/Lucidchart/etc.
+          </p>
+          <img
+            src="../../assets/diagrams/uk-a2a-scheme.png"
+            alt="UK domestic real-time A2A merchant payment scheme architecture diagram"
+            class="arch-diagram"
+          />
+
+          <h2>Key Architectural Components</h2>
+
+          <h3>1. Access Layer</h3>
+          <ul>
+            <li>
+              <strong>Merchant Integration Gateway (MIG)</strong> – single northbound API for
+              merchants and acquirers to initiate payments, query status, manage refunds and receive
+              notifications. Abstracts underlying scheme complexity.
+            </li>
+            <li>
+              <strong>Issuer Integration Gateway</strong> – southbound API for issuers to receive
+              payment requests, trigger SCA and return authorisation outcomes. Supports different
+              integration patterns and secure, encrypted channels.
+            </li>
+          </ul>
+
+          <h3>2. Scheme Core Services</h3>
+          <ul>
+            <li>
+              <strong>Scheme Switch / Orchestrator</strong> – coordinates the end-to-end flow from
+              merchant initiation to final confirmation, managing transaction state, applying scheme
+              rules and calling risk services.
+            </li>
+            <li>
+              <strong>Tokenisation &amp; Alias Service</strong> – maps QR/NFC tokens, device
+              tokens or merchant-presented aliases to underlying customer accounts, ensuring account
+              numbers are never exposed to merchants.
+            </li>
+            <li>
+              <strong>Directory / Participant Registry</strong> – maintains routing data, issuer
+              and acquirer capabilities, limits and status; the switch uses this to choose the
+              correct issuer/acquirer path.
+            </li>
+            <li>
+              <strong>Fraud &amp; Risk Engine</strong> – performs real-time fraud scoring using
+              behavioural analytics, device attributes, merchant profiles and transaction history.
+              Provides allow/decline/step-up-SCA decisions.
+            </li>
+            <li>
+              <strong>Dispute Management &amp; Liability Engine</strong> – manages claims and
+              evidence, and assigns financial responsibility according to the scheme rulebook.
+            </li>
+            <li>
+              <strong>Refund Orchestration Engine</strong> – processes approved refunds as new FPS
+              credit transfers back to the customer.
+            </li>
+            <li>
+              <strong>Data &amp; Reporting Platform</strong> – centralised data store supporting
+              clearing, scheme-level reporting, analytics, risk models and regulatory reporting.
+            </li>
+          </ul>
+
+          <h3>3. Security &amp; Platform Services</h3>
+          <ul>
+            <li>HSM-backed key management.</li>
+            <li>Mutual TLS and strong authentication between all scheme components.</li>
+            <li>Comprehensive audit logging and traceability across flows.</li>
+            <li>Operational monitoring, alerting and SRE practices.</li>
+          </ul>
+
+          <h2>End-to-End Payment Flow</h2>
+          <ol>
+            <li>
+              <strong>Merchant initiates payment:</strong> Merchant POS/SoftPOS/e-commerce
+              integrates with the MIG to create a payment request.
+            </li>
+            <li>
+              <strong>Scheme runs risk &amp; routing:</strong> Scheme switch resolves customer
+              token/alias, runs real-time fraud checks and selects the correct issuer/acquirer using
+              the directory.
+            </li>
+            <li>
+              <strong>Issuer SCA:</strong> The scheme sends an authorisation request to the issuer.
+              The issuer triggers SCA in the customer’s banking app or wallet; the customer reviews
+              and approves the payment.
+            </li>
+            <li>
+              <strong>FPS settlement:</strong> Once approved, the issuer debits the customer and
+              sends an FPS credit to the acquirer PSP.
+            </li>
+            <li>
+              <strong>Merchant credited:</strong> The acquirer credits the merchant settlement
+              account and updates merchant balances.
+            </li>
+            <li>
+              <strong>Confirmation:</strong> Authorisation and settlement confirmations flow back
+              through the scheme to the merchant, and the customer sees the transaction in their
+              banking app in real time.
+            </li>
+          </ol>
+
+          <h2>Disputes &amp; Refunds Model</h2>
+          <p>
+            Because FPS payments are irrevocable, the scheme cannot rely on traditional
+            chargebacks. Instead, it uses a <strong>claims-and-refunds</strong> model:
+          </p>
+          <ol>
+            <li>Customer raises a claim with their issuer.</li>
+            <li>Issuer submits the claim to the scheme dispute system.</li>
+            <li>Merchant/acquirer provides supporting evidence.</li>
+            <li>Liability Rules Engine determines which party is responsible.</li>
+            <li>
+              Refund Orchestration Engine instructs a new FPS credit from the liable party to the
+              customer.
+            </li>
+          </ol>
+          <p>
+            Optionally, a <strong>scheme guarantee pool</strong> can be introduced to handle
+            specific categories of fraud (e.g. certain APP fraud scenarios), balancing customer
+            protection with scheme economics.
+          </p>
+
+          <h2>International Payments via Co-Badging</h2>
+          <p>
+            For global acceptance, the architecture supports <strong>co-badged instruments</strong>
+            where cards or wallet tokens carry:
+          </p>
+          <ul>
+            <li>
+              A <strong>domestic A2A scheme identifier</strong> used by UK POS and merchants to
+              route payments over the A2A scheme and FPS.
+            </li>
+            <li>
+              An <strong>international card network identifier</strong> (e.g. Visa/Mastercard) used
+              abroad or where A2A is not supported.
+            </li>
+          </ul>
+          <p>
+            This follows patterns similar to Brazil (Elo + Discover), Malaysia (MyDebit +
+            Visa/Mastercard) and France (Carte Bancaire + Visa), keeping domestic transactions on
+            low-cost national rails while maintaining global reach.
+          </p>
+
+          <h2>Outcomes</h2>
+          <ul>
+            <li>
+              A coherent target architecture for a UK domestic A2A merchant payment scheme that can
+              match card UX while using FPS for real-time settlement.
+            </li>
+            <li>
+              Strong customer privacy via tokenisation and issuer-based SCA.
+            </li>
+            <li>
+              Clear dispute and liability model aligned with FPS finality.
+            </li>
+            <li>
+              Architecture that balances domestic control, scheme economics and international
+              acceptance through co-badging.
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>
